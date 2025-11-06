@@ -1,16 +1,27 @@
-# React + Vite
+# Trivia Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The React + Vite web app that visualizes data from [Open Trivia DB](https://opentdb.com/). It provides distribution charts for categories and difficulty leveles and features interactive category filtering.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Clone the repository
+```
+git clone https://github.com/arinash/trivia-visualizer.git
+cd trivia-visualizer
+```
+Install dependencies ```npm install```
 
-## React Compiler
+Run ```npm start```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Runs the app in the development mode.
 
-## Expanding the ESLint configuration
+Open URL shown in your terminal to see it in your browser (usually http://localhost:5173).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Live Demo
+https://arinash.github.io/trivia-visualizer/
+
+## API Usage
+
+Questions are fetched from https://opentdb.com/api.php
+
+Categories are fetched from https://opentdb.com/api_category.php
