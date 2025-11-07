@@ -9,10 +9,16 @@ import {
 import { categoryDistribution, getColor } from "../utils/dataUtils";
 import { useState, useEffect } from "react";
 
+/**
+ * Pie chart displaying questions distribution by category.
+ * 
+ * @param {Array} questions - array of question objects
+ */
 const Category = ({ questions }) => {
   const [activeItem, setActiveItem] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
 
+  // Helper function for resizing or hiding the legend when window size gets smaller
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 640);
     window.addEventListener("resize", handleResize);
@@ -33,6 +39,7 @@ const Category = ({ questions }) => {
   };
   const data = categoryDistribution(questions);
 
+  // Custom tooltip to show category name, number of questions in this category and percentage
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
@@ -48,6 +55,7 @@ const Category = ({ questions }) => {
     return null;
   };
 
+  // Helper functions to highlight hovered segment on the chart
   const handleMouseEnter = (_, index) => setActiveItem(index);
   const handleMouseLeave = () => setActiveItem(null);
 

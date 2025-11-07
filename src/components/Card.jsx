@@ -1,3 +1,9 @@
+/**
+ * Reuable card component to display satistics.
+ * 
+ * @param {string} title - card title
+ * @param {string | number} value - value to display
+ */
 const Card = ({ title, value }) => {
   return (
     <div className="card-base flex fitems-center gap-4 border border-primary-600 transition-transform hover:scale-105 hover:shadow-custom">

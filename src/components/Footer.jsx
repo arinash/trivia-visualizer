@@ -1,3 +1,6 @@
+/**
+ * Footer component  displaying data source and technical details
+ */
 const Footer = () => {
   return (
     <footer className="mt-5 py-8 text-center border-t border-secondary-200 text-secondary-500">

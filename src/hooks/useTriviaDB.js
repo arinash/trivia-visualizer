@@ -1,24 +1,41 @@
 import { useState, useEffect } from "react";
 import { fetchCategories, fetchQuestionsByCategory } from "../api/api";
 
+/**
+ * Custom React hook to fetch trivia categories and questions from the
+ * Open Trivia DB and provide filter state.
+ *
+ * @returns {Object}:
+ * - categories: array of category objects
+ * - questions: array of fetched question objects
+ * - filteredQuestions: questions filtered by selectedCategories
+ * - loading: request status
+ * - error: request status
+ * - selectedCategories: array state for multi-select
+ * - setSelectedCategories: function to set array state for multi-select
+ *
+ * Notes: By default this hook fetches 50 questions and all categories on mount.
+ */
+
 const useTriviaDB = () => {
     const [categories, setCategories] = useState([]);
     const [questions, setQuestions] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [selectedCategories, setSelectedCategories] = useState(["all"]);
-    const [filteredQuestions, setFilteredQuestions] = useState([]);
+    const [filteredQuestions, setFilteredQuestions] =
 
-    //Fetch categories on mount
+    // Fetch categories and initial questions on mount
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
+                // Fetch catgories
                 const data = await fetchCategories();
                 setCategories(data);
 
+                //Fetch questions from fetched categories
                 const questionsData = await fetchQuestionsByCategory(null, 50);
-
                 setQuestions(questionsData);
                 setFilteredQuestions(questionsData);
             } catch (err) {
@@ -31,7 +48,8 @@ const useTriviaDB = () => {
         fetchData();
     }, []);
 
-    //Filter questions based on selected categories
+    // Filter questions when selectedCategories or questions change
+    // Show all questions when "all" is selected
     useEffect(() => {
         if (selectedCategories.includes("all")) {
             setFilteredQuestions(questions);
@@ -41,9 +59,9 @@ const useTriviaDB = () => {
         }
     }, [selectedCategories, questions]);
 
-    //Reset filter
+    // Helper function to reset filter
     const resetFilter = () => {
-        setSelectedCategory("all");
+        setSelectedCategories(["all"]);
     };
 
     return {

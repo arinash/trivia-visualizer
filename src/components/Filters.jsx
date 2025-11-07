@@ -1,8 +1,17 @@
 import { getUniqueCategories } from "../utils/dataUtils";
 
+/**
+ * Filter controls component for category selection.
+ * Contains multiple buttons to allow for multiple selection.
+ * 
+ * @param {Array} questions - array of question objects
+ * @param {Array} selectedCategories - array of currently selected category names
+ * @param {Function} onCategoryChange - function to call with the new selection array
+ */
 const Filters = ({ questions, selectedCategories, onCategoryChange }) => {
   const categories = getUniqueCategories(questions);
 
+  // Toggle a single category in the selected array
   const handleCategoryChange = (category) => {
     if (category === "all") {
       onCategoryChange(["all"]);

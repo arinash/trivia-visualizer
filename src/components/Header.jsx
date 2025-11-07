@@ -1,3 +1,6 @@
+/**
+ * Header component displaying title and brief description
+ */
 const Header = () => {
   return (
     <header className="w-full top-0 left-0 bg-white shadow-custom px-8 py-4 flex flex-col items-start">
